@@ -9,10 +9,10 @@ name: lint-dev
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
  
 jobs:
   lint:
