@@ -1,0 +1,17 @@
+{
+    "problemMatcher": [
+        {
+            "owner": "lintr",
+            "pattern": [
+                {
+                    "regexp": "^(warning|error|style):(?:\\w?\\\/(?:[^\\\\\\\/:*?\"<>|\\r\\n]+\\\/)*)([^\\\\\\\/:*?\"<>|\\r\\n]*):(\\d+):(\\d+)::(.+)$",
+                    "file": 2,
+                    "line": 3,
+                    "column": 4,
+                    "severity": 1,
+                    "message": 5
+                }
+            ]
+        }
+    ]
+}
