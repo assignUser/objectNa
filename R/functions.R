@@ -4,6 +4,9 @@
 #' @exported
 exported <- function(x) {
     x + 1
+
 }
 
-.internal()
+a_func <- function() {
+        .internal(2)
+  }

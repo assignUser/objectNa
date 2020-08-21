@@ -4,4 +4,14 @@
 #' @noRd
 .internal <- function(x) {
     x - 1
+
+    exported(x)
+
+    if (T) {
+        exported(x)
+    }
+
+    if (T)
+        exported(x)
 }
+exported(2)

@@ -1,0 +1,42 @@
+name: lint-dev
+
+# on:
+#     workflow_dispatch:
+#       inputs:
+#         git-ref:
+#           description: Git Ref (Optional)    
+#           required: false 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+ 
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      # - name: Clone Repository (Latest)
+      #   uses: actions/checkout@v2
+      #   if: github.event.inputs.git-ref == ''
+
+      # - name: Clone Repository (Custom Ref)
+      #   uses: actions/checkout@v2
+      #   if: github.event.inputs.git-ref != ''
+      #   with:
+      #     ref: ${{ github.event.inputs.git-ref }}
+            
+      - uses: actions/checkout@v2
+  
+      - name: Use problem-matcher
+        run: echo "::add-matcher::.github/workflows/lintr.json"
+
+      - name: Lint
+        uses: docker://assignuser/lintr-lib:v0.1.0
+        with:
+          entrypoint: /usr/bin/R
+          args: --slave -e "err <- lintr::lint_package(); print(err); quit(save = 'no', status = if (length(err) > 0) 1 else 0)"
