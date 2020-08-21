@@ -3,7 +3,6 @@
 # assignment
 # function_left_parentheses
 # closed_curly
-# commas
 # paren_brace
 f = function (x,y = 1){}
 
